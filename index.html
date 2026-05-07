@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWITTEK | บริการให้คำปรึกษา ฝึกอบรม และจดแจ้ง อย.</title>
+<meta name="description" content="บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด - บริการให้คำปรึกษาและฝึกอบรมระบบการจัดการด้านคุณภาพและความปลอดภัยอาหาร">
+
+<!-- Google Fonts: Prompt (Thai sans-serif, ไม่มีหัว, modern) + IBM Plex Sans Thai -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brand:#1cb5e0;
+  --brand-2:#0a7ca8;
+  --brand-3:#000851;
+  --ink:#0f1b2d;
+  --ink-2:#475569;
+  --muted:#64748b;
+  --line:#e6ecf3;
+  --bg:#ffffff;
+  --bg-soft:#f6f9fc;
+  --grad-hero: linear-gradient(135deg,#1cb5e0 0%, #2596be 50%, #000851 100%);
+  --grad-cyan: linear-gradient(135deg,#1cb5e0,#0a7ca8);
+  --shadow-sm: 0 1px 2px rgba(15,27,45,.06), 0 2px 8px rgba(15,27,45,.04);
+  --shadow-md: 0 6px 18px rgba(15,27,45,.08), 0 2px 6px rgba(15,27,45,.05);
+  --shadow-lg: 0 24px 60px -16px rgba(10,124,168,.25), 0 8px 24px rgba(15,27,45,.08);
+  --radius: 14px;
+  --radius-lg: 22px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Prompt','IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ============ HEADER ============ */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;max-width:1280px;margin:0 auto;gap:24px;
+}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-img{
+  height:48px;width:auto;display:block;
+  transition:transform .25s ease;
+}
+.logo:hover .logo-img{transform:scale(1.03)}
+
+@media (max-width:520px){
+  .logo-img{height:38px}
+}
+
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{
+  padding:8px 16px;border-radius:10px;
+  font-size:15px;font-weight:500;color:var(--ink-2);
+  transition:all .2s ease;
+  position:relative;
+}
+.nav a:hover{color:var(--brand-2);background:#eaf7fc}
+.nav a.active{color:var(--brand-2)}
+.nav a.active::after{
+  content:"";position:absolute;left:50%;bottom:2px;
+  width:18px;height:2px;background:var(--brand);border-radius:2px;
+  transform:translateX(-50%);
+}
+
+.lang{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 12px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--ink-2);
+}
+.lang .flag{
+  width:22px;height:15px;border-radius:2px;
+  overflow:hidden;
+  display:block;
+  box-shadow:0 0 0 1px rgba(0,0,0,.08);
+  flex-shrink:0;
+}
+.lang .flag svg{width:100%;height:100%;display:block}
+
+.menu-toggle{display:none;width:40px;height:40px;border-radius:10px;background:#f1f5f9}
+.menu-toggle span{display:block;width:18px;height:2px;background:var(--ink);margin:0 auto;border-radius:2px}
+.menu-toggle span+span{margin-top:4px}
+
+@media (max-width:980px){
+  .nav{
+    position:fixed;top:0;right:0;
+    width:280px;max-width:80vw;height:100vh;
+    background:#fff;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:80px 24px 32px;
+    box-shadow:-20px 0 60px rgba(15,27,45,.15);
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    z-index:99;
+    overflow-y:auto;
+  }
+  .nav.open{transform:translateX(0)}
+  .nav a{
+    padding:14px 18px;
+    border-radius:12px;
+    font-size:16px;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+  }
+  .nav a:last-child{border-bottom:none}
+  .nav a.active::after{display:none}
+  .nav a.active{
+    background:linear-gradient(90deg,rgba(28,181,224,.1),transparent);
+    color:var(--brand-2);
+    border-left:3px solid var(--brand);
+    padding-left:15px;
+  }
+  .menu-toggle{
+    display:grid;place-items:center;gap:0;padding:11px 0;
+    z-index:101;position:relative;
+  }
+  .menu-toggle.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-toggle.active span:nth-child(2){opacity:0}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .menu-toggle span{transition:transform .3s, opacity .2s}
+  .menu-overlay{
+    position:fixed;inset:0;
+    background:rgba(15,27,45,.5);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    opacity:0;pointer-events:none;
+    transition:opacity .3s;
+    z-index:98;
+  }
+  .menu-overlay.show{opacity:1;pointer-events:auto}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  min-height:620px;
+  display:grid;place-items:center;
+  color:#fff;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(100deg, rgba(0,8,81,.55) 0%, rgba(10,124,168,.32) 45%, rgba(28,181,224,.15) 70%, rgba(255,255,255,0) 100%),
+    url('img/BG_01.png') center top/cover no-repeat;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,8,81,.35), transparent 55%);
+}
+.hero-content{
+  text-align:left;padding:80px 24px;
+  max-width:1200px;width:100%;
+  margin:0 auto;
+  animation:heroIn .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-content-inner{
+  max-width:640px;
+}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:13px;font-weight:500;letter-spacing:.5px;
+  margin-bottom:22px;
+  backdrop-filter:blur(8px);
+}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#5fe7ff;box-shadow:0 0 12px #5fe7ff}
+
+.hero h1{
+  font-size:clamp(34px,5vw,54px);
+  font-weight:700;line-height:1.15;
+  letter-spacing:-.5px;
+  margin-bottom:18px;
+  text-shadow:0 4px 24px rgba(0,0,0,.35);
+}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#5fe7ff,#a8f1ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.hero p{
+  font-size:clamp(15px,1.6vw,18px);
+  font-weight:300;
+  opacity:.95;
+  max-width:580px;margin-bottom:32px;
+  line-height:1.6;
+  text-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.hero-cta{display:inline-flex;gap:12px;flex-wrap:wrap}
+
+@media (max-width:768px){
+  .hero::before{
+    background:
+      linear-gradient(180deg, rgba(0,8,81,.7), rgba(10,124,168,.55) 100%),
+      url('img/BG_01.png') center top/cover no-repeat;
+  }
+  .hero-content{text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-cta{justify-content:center}
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 26px;border-radius:999px;
+  font-size:15px;font-weight:500;
+  transition:transform .2s ease, box-shadow .25s ease, background .2s ease;
+}
+.btn-primary{
+  background:#fff;color:var(--brand-2);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.22)}
+.btn-ghost{
+  background:rgba(255,255,255,.1);color:#fff;
+  border:1px solid rgba(255,255,255,.35);
+  backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+
+.hero-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  display:grid;place-items:center;color:#fff;
+  cursor:pointer;transition:background .2s;
+  backdrop-filter:blur(8px);
+}
+.hero-arrow:hover{background:rgba(255,255,255,.22)}
+.hero-arrow.prev{left:24px}
+.hero-arrow.next{right:24px}
+
+/* ============ SECTION HEAD ============ */
+.section{padding:96px 0}
+.section-head{text-align:center;max-width:780px;margin:0 auto 56px}
+.section-eyebrow{
+  display:inline-block;font-size:13px;font-weight:600;letter-spacing:3px;
+  color:var(--brand-2);text-transform:uppercase;margin-bottom:12px;
+}
+.section-head h2{
+  font-size:clamp(30px,4vw,44px);
+  font-weight:700;line-height:1.2;letter-spacing:-.5px;color:var(--ink);
+  margin-bottom:18px;
+  position:relative;display:inline-block;
+}
+.section-head h2::after{
+  content:"";position:absolute;left:50%;bottom:-12px;
+  width:48px;height:3px;background:var(--grad-cyan);border-radius:2px;
+  transform:translateX(-50%);
+}
+.section-head p{font-size:16px;color:var(--ink-2);margin-top:24px;font-weight:300;line-height:1.8}
+.section-head p + p{margin-top:14px}
+
+/* ============ SERVICES ============ */
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+}
+.service-card{
+  background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius-lg);overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .25s ease;
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+  border-color:transparent;
+}
+.service-card .img-wrap{
+  height:200px;overflow:hidden;position:relative;
+}
+.service-card .img-wrap::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(0,8,81,.25));
+}
+.service-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.service-card:hover img{transform:scale(1.06)}
+.service-card .body{padding:26px 26px 30px;flex:1;display:flex;flex-direction:column}
+.service-card h3{
+  font-size:22px;font-weight:600;color:var(--ink);
+  margin-bottom:12px;
+}
+.service-card p{font-size:15px;color:var(--ink-2);line-height:1.7;font-weight:300;flex:1}
+
+/* ============ VIDEO ============ */
+.video-section{background:var(--bg-soft)}
+.video-wrap{
+  max-width:880px;margin:0 auto;
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  position:relative;aspect-ratio:16/9;
+  background:#0f1b2d;
+  cursor:pointer;
+}
+.video-wrap img, .video-wrap video{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+.video-wrap video{opacity:.95;transition:opacity .3s ease}
+.video-wrap.playing video{opacity:1}
+.play-btn{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:84px;height:84px;border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:grid;place-items:center;
+  cursor:pointer;
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
+  transition:transform .25s ease, opacity .3s ease;
+  z-index:2;
+}
+.play-btn:hover{transform:translate(-50%,-50%) scale(1.08)}
+.play-btn::before{
+  content:"";display:block;
+  width:0;height:0;
+  border-left:24px solid var(--brand-2);
+  border-top:14px solid transparent;
+  border-bottom:14px solid transparent;
+  margin-left:6px;
+}
+.play-btn::after{
+  content:"";position:absolute;inset:-8px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.5);
+  animation:pulse 2s infinite;
+}
+.video-wrap.playing .play-btn{opacity:0;pointer-events:none}
+.video-wrap.playing .video-caption{opacity:0}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.4);opacity:0}}
+.video-caption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:18px 24px;color:#fff;font-size:15px;font-weight:500;
+  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+  transition:opacity .3s ease;
+  z-index:1;
+}
+
+/* ============ CLIENTS ============ */
+.clients-strip{
+  background:linear-gradient(180deg,#fff,var(--bg-soft));
+  padding:80px 0;
+  position:relative;overflow:hidden;
+}
+.clients-image{
+  max-width:1100px;margin:0 auto;
+  padding:24px;
+  background:#fff;
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  border:1px solid var(--line);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.clients-image:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+}
+.clients-image img{
+  width:100%;height:auto;display:block;
+  border-radius:8px;
+}
+
+/* ============ TEAM ============ */
+.team-section{background:#fff}
+.team-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  max-width:980px;margin:0 auto;
+}
+.team-card{
+  text-align:center;
+  padding:32px 24px;border-radius:var(--radius-lg);
+  background:#fff;border:1px solid transparent;
+  transition:all .3s ease;
+}
+.team-card:hover{
+  background:#fff;border-color:var(--line);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-6px);
+}
+.team-photo{
+  width:220px;height:280px;
+  margin:0 auto 20px;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#eaf7fc,#fff);
+  position:relative;
+  box-shadow:0 14px 40px rgba(15,27,45,.08);
+}
+.team-photo::after{
+  content:"";position:absolute;inset:0;
+  border-radius:18px;
+  box-shadow:inset 0 0 0 1px rgba(15,27,45,.06);
+  pointer-events:none;
+}
+.team-photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  transition:transform .5s ease;
+}
+.team-card:hover .team-photo img{transform:scale(1.04)}
+.team-card h4{
+  font-size:19px;font-weight:600;color:var(--ink);margin-bottom:6px;
+}
+.team-card .role{
+  font-size:14px;color:var(--brand-2);font-weight:400;
+  letter-spacing:.3px;
+}
+
+/* ============ CONTACT ============ */
+.contact-section{
+  background:linear-gradient(180deg,var(--bg-soft) 0%,#eaf2f8 100%);
+  position:relative;overflow:hidden;
+}
+.contact-section::before{
+  content:"";position:absolute;
+  top:-200px;right:-200px;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(28,181,224,.15),transparent 70%);
+  border-radius:50%;
+}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:60px;
+  max-width:1000px;margin:0 auto;
+  position:relative;
+}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.info-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:18px;border-radius:14px;
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(28,181,224,.15);
+  backdrop-filter:blur(8px);
+  transition:transform .25s;
+}
+.info-item:hover{transform:translateX(4px)}
+.info-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--grad-cyan);
+  display:grid;place-items:center;flex-shrink:0;color:#fff;
+  box-shadow:0 6px 16px rgba(28,181,224,.3);
+}
+.info-icon svg{width:20px;height:20px}
+.info-text{flex:1}
+.info-text strong{display:block;font-size:15px;color:var(--ink);margin-bottom:4px;font-weight:600}
+.info-text p, .info-text a{
+  font-size:14px;color:var(--ink-2);line-height:1.6;font-weight:300;
+  transition:color .2s;
+}
+.info-text a:hover{color:var(--brand-2)}
+
+.contact-form{
+  background:#fff;
+  padding:36px;border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-md);
+  border:1px solid var(--line);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:18px;position:relative}
+.field label{
+  display:block;font-size:13px;font-weight:500;
+  color:var(--ink-2);margin-bottom:6px;
+}
+.field label .req{color:#e11d48}
+.field input, .field textarea{
+  width:100%;padding:13px 14px;
+  border:1.5px solid var(--line);border-radius:10px;
+  font-family:inherit;font-size:15px;color:var(--ink);
+  background:#fbfdff;
+  transition:border-color .2s, box-shadow .2s;
+}
+.field input:focus, .field textarea:focus{
+  outline:none;border-color:var(--brand);
+  box-shadow:0 0 0 4px rgba(28,181,224,.12);
+  background:#fff;
+}
+.field textarea{resize:vertical;min-height:110px}
+.btn-submit{
+  width:100%;padding:14px;border-radius:10px;
+  background:linear-gradient(135deg,#06c755,#00b900);
+  color:#fff;
+  font-size:15px;font-weight:500;letter-spacing:.5px;
+  transition:transform .2s, box-shadow .25s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(6,199,85,.4)}
+.btn-submit svg{width:20px;height:20px}
+
+/* ============ GALLERY STRIP ============ */
+.gallery-strip{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+  height:200px;overflow:hidden;
+}
+.gallery-strip > div{
+  background-size:cover;background-position:center;
+  filter:saturate(1.05);
+  transition:filter .3s, transform .5s;
+}
+.gallery-strip > div:hover{filter:saturate(1.2) brightness(1.05);transform:scale(1.04)}
+
+/* ============ FOOTER ============ */
+.footer{
+  background:linear-gradient(135deg,#0a7ca8,#1cb5e0);
+  color:#fff;padding:24px 0;
+  text-align:center;font-size:14px;
+}
+.footer-inner{
+  display:flex;justify-content:center;align-items:center;gap:24px;
+  flex-wrap:wrap;
+}
+.footer-inner span{opacity:.85}
+.footer-inner .sep{opacity:.4}
+.footer a{color:#fff;font-weight:500}
+.footer a:hover{text-decoration:underline}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:920px){
+  .services-grid{grid-template-columns:1fr;gap:20px}
+  .team-grid{grid-template-columns:1fr;gap:20px}
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .gallery-strip{grid-template-columns:repeat(3,1fr);height:auto}
+  .gallery-strip > div{aspect-ratio:1/1}
+  .form-row{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .clients-image{padding:16px}
+  .hero-arrow{display:none}
+}
+@media (max-width:520px){
+  .contact-form{padding:24px}
+  .clients-image{padding:12px}
+}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ SUBMIT MODAL ============ */
+.submit-modal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(15,27,45,.55);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  display:grid;place-items:center;
+  opacity:0;transition:opacity .3s ease;
+  padding:24px;
+}
+.submit-modal.show{opacity:1}
+.submit-modal-card{
+  background:#fff;
+  padding:40px 36px 32px;
+  border-radius:20px;
+  text-align:center;
+  max-width:380px;width:100%;
+  box-shadow:0 30px 80px rgba(0,8,81,.3);
+  transform:scale(.9) translateY(20px);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.submit-modal.show .submit-modal-card{transform:scale(1) translateY(0)}
+.submit-modal-icon{
+  width:72px;height:72px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#06c755,#00b900);
+  display:grid;place-items:center;
+  color:#fff;
+  box-shadow:0 12px 30px rgba(6,199,85,.4);
+  animation:checkPop .5s cubic-bezier(.2,1.6,.4,1) .15s both;
+}
+.submit-modal-icon svg{width:36px;height:36px}
+@keyframes checkPop{
+  0%{transform:scale(0) rotate(-45deg)}
+  100%{transform:scale(1) rotate(0)}
+}
+.submit-modal-card h3{
+  font-size:24px;font-weight:600;color:var(--ink);
+  margin-bottom:10px;
+}
+.submit-modal-card p{
+  font-size:14px;color:var(--ink-2);
+  line-height:1.6;font-weight:300;
+  margin-bottom:20px;
+}
+.submit-modal-loader{
+  display:flex;justify-content:center;gap:6px;
+}
+.submit-modal-loader span{
+  width:8px;height:8px;border-radius:50%;
+  background:#06c755;
+  animation:loaderBounce 1.2s infinite ease-in-out both;
+}
+.submit-modal-loader span:nth-child(1){animation-delay:-.32s}
+.submit-modal-loader span:nth-child(2){animation-delay:-.16s}
+@keyframes loaderBounce{
+  0%,80%,100%{transform:scale(0.5);opacity:.5}
+  40%{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <img src="img/logo.png" alt="SWITTEK Training and Consultancy Co., Ltd." class="logo-img">
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="active">หน้าแรก</a>
+      <a href="consulting.html">งานให้คำปรึกษา</a>
+      <a href="training.html">ฝึกอบรม</a>
+      <a href="fda.html">บริการจดแจ้ง อย.</a>
+      <a href="about.html">เกี่ยวกับเรา</a>
+      <a href="contact.html">ติดต่อเรา</a>
+      <a href="portfolio.html">ผลงาน</a>
+    </nav>
+    <div class="lang">
+      <span class="flag">
+        <svg viewBox="0 0 6 4" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <rect width="6" height="4" fill="#A51931"/>
+          <rect width="6" height="2.667" y="0.667" fill="#F4F5F8"/>
+          <rect width="6" height="1.333" y="1.333" fill="#2D2A4A"/>
+        </svg>
+      </span>
+      <span>TH</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <button class="hero-arrow prev" aria-label="prev">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <span class="hero-eyebrow"><span class="dot"></span>ประสบการณ์มากกว่า 20 ปี</span>
+      <h1>บริการ<em>ให้คำปรึกษา</em><br>ฝึกอบรมระบบการจัดการ<br>ด้านคุณภาพและความปลอดภัยอาหาร</h1>
+      <p>ที่ปรึกษามืออาชีพ ผู้เชี่ยวชาญระดับมืออาชีพในประเทศไทย ที่ช่วยให้ธุรกิจของคุณเติบโตด้วยมาตรฐานสากล GMP, HACCP, ISO และการขออนุญาต อย.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">ปรึกษาฟรี →</a>
+        <a href="#services" class="btn btn-ghost">ดูบริการของเรา</a>
+      </div>
+    </div>
+  </div>
+  <button class="hero-arrow next" aria-label="next">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Our Services</span>
+      <h2>บริการ</h2>
+      <p>บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด ประกอบกิจการ บริการให้คำปรึกษาและฝึกอบรมระบบการจัดการด้านคุณภาพและความปลอดภัยอาหาร โดยทีมผู้เชี่ยวชาญระดับมืออาชีพในประเทศไทยที่มีประสบการณ์มากกว่า 20 ปี</p>
+      <p>บริษัทฯ มีบริการให้คำปรึกษา บริการฝึกอบรม ตามระบบมาตรฐานการจัดการต่างๆ ตามมาตรฐานสากล กฎหมายอาหารที่เกี่ยวข้องกับผู้ประกอบการธุรกิจอาหาร และอื่นๆ ที่ไม่ใช่อาหาร รวมถึงการให้บริการจดแจ้ง อย. ยื่นขออนุญาตสถานที่และขออนุญาตผลิตภัณฑ์ให้เป็นตามกฎหมาย เพื่ออำนวยความสะดวกให้แก่ผู้ประกอบการและบริการที่รวดเร็ว</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="img-wrap">
+          <img src="img/consulting.png" alt="การให้คำปรึกษา">
+        </div>
+        <div class="body">
+          <h3>การให้คำปรึกษา</h3>
+          <p>เราทีมที่ปรึกษามืออาชีพ มากประสบการณ์ เน้นคุณภาพ นำไปใช้ได้จริง และผ่านการรับรอง 100%</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="img-wrap">
+          <img src="img/training.png" alt="การฝึกอบรม">
+        </div>
+        <div class="body">
+          <h3>การฝึกอบรม</h3>
+          <p>เราให้บริการฝึกอบรมหลากหลายหลักสูตรทั้งแบบ Online และ Onsite โดยวิทยากรมืออาชีพ สอนสนุก เข้าใจง่าย พร้อมตัวอย่างให้เห็นภาพจริง</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="img-wrap">
+          <img src="img/fda.png" alt="บริการจดแจ้ง อย.">
+        </div>
+        <div class="body">
+          <h3>บริการจดแจ้ง อย.</h3>
+          <p>การบริการจดแจ้ง อย. ให้คำปรึกษาการจัดทำเอกสารต่างๆ โดยทีมงานมืออาชีพ มากประสบการณ์ เพื่อยื่นขออนุญาตเป็นไปอย่างรวดเร็ว</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEO ===== -->
+<section class="section video-section">
+  <div class="container">
+    <div class="video-wrap reveal" id="videoWrap">
+      <video id="introVideo" playsinline preload="metadata" poster="">
+        <source src="img/Video.mp4" type="video/mp4">
+        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+      </video>
+      <button class="play-btn" id="playBtn" aria-label="เล่นวิดีโอ"></button>
+      <div class="video-caption">รับบริการที่ปรึกษา ประสบการณ์มากกว่า 20 ปี</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENTS ===== -->
+<section class="clients-strip">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Trusted by</span>
+      <h2>ลูกค้าของเรา</h2>
+    </div>
+    <div class="clients-image reveal">
+      <img src="img/clients.png" alt="ลูกค้าของเรา - F&N, Tipco, MK, Lotte, Universal Robina, Pataya, Yamamori, BR Group, S&P, Aura, Ajinomoto, Dumex, Kellogg's, Oishi, Saha Farms, Pepsico, Nestlé, Cargill, Mitr Phol, CPF และอื่นๆ">
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="section team-section" id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Our Experts</span>
+      <h2>ทีมงาน</h2>
+    </div>
+
+    <div class="team-grid">
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="img/team_leader.png" alt="นางอิสรีย์ เยียระติกานต์">
+        </div>
+        <h4>นางอิสรีย์ เยียระติกานต์</h4>
+        <p class="role">ที่ปรึกษาอาวุโส และวิทยากรฝึกอบรม</p>
+      </article>
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="img/team_leader2.png" alt="นางสาวชญานี ชีรคุปต์">
+        </div>
+        <h4>นางสาวชญานี ชีรคุปต์</h4>
+        <p class="role">ที่ปรึกษาและวิทยากรฝึกอบรม</p>
+      </article>
+
+      <article class="team-card reveal">
+        <div class="team-photo">
+          <img src="img/team_leader3.png" alt="นายโสภณ ทัศนบรรจง">
+        </div>
+        <h4>นายโสภณ ทัศนบรรจง</h4>
+        <p class="role">ที่ปรึกษาและวิทยากรฝึกอบรม</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Get in Touch</span>
+      <h2>ติดต่อเรา</h2>
+      <p>ทางเราพร้อมที่จะให้คำปรึกษา</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info reveal">
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="info-text">
+            <strong>บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด</strong>
+            <p>445/141 หมู่บ้านกัสสร บางนา ม.12<br>ต.บางพลีใหญ่ อ.บางพลี<br>จ.สมุทรปราการ 10540</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="info-text">
+            <strong>เบอร์ติดต่อ</strong>
+            <p>02-0056782<br>083-4265554, 086-3986532</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="info-text">
+            <strong>E-mail</strong>
+            <a href="mailto:issaree@swittek.co.th">issaree@swittek.co.th</a>
+            <p>LineID : kungissaree</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form class="contact-form reveal" id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label>ชื่อ <span class="req">*</span></label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="field">
+            <label>บริษัท</label>
+            <input type="text" name="company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" required>
+          </div>
+          <div class="field">
+            <label>เบอร์โทรศัพท์ <span class="req">*</span></label>
+            <input type="tel" name="phone" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>ข้อความ <span class="req">*</span></label>
+          <textarea name="message" required placeholder="แจ้งรายละเอียดที่ต้องการให้คำปรึกษา..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.631.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.282.629-.631.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          ส่งข้อมูลผ่าน LINE
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY STRIP ===== -->
+<div class="gallery-strip">
+  <div style="background-image:url('https://images.unsplash.com/photo-1544531585-9847b68c8c86?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80')"></div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner container">
+    <span>บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด</span>
+    <span class="sep">|</span>
+    <span>ติดต่อ 02-0056782, 083-4265554</span>
+    <span class="sep">|</span>
+    <span>E-mail <a href="mailto:issaree@swittek.co.th">issaree@swittek.co.th</a></span>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+const menuOverlay = document.getElementById('menuOverlay');
+
+function closeMenu(){
+  mainNav.classList.remove('open');
+  menuToggle.classList.remove('active');
+  menuOverlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+function openMenu(){
+  mainNav.classList.add('open');
+  menuToggle.classList.add('active');
+  menuOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+menuToggle.addEventListener('click', ()=>{
+  if(mainNav.classList.contains('open')) closeMenu();
+  else openMenu();
+});
+menuOverlay.addEventListener('click', closeMenu);
+mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Video player control
+const videoWrap = document.getElementById('videoWrap');
+const video = document.getElementById('introVideo');
+const playBtn = document.getElementById('playBtn');
+
+function togglePlay(){
+  if(video.paused){
+    video.play();
+    videoWrap.classList.add('playing');
+    video.setAttribute('controls','controls');
+  } else {
+    video.pause();
+    videoWrap.classList.remove('playing');
+  }
+}
+
+playBtn.addEventListener('click', (e)=>{
+  e.stopPropagation();
+  togglePlay();
+});
+
+video.addEventListener('pause', ()=>{
+  videoWrap.classList.remove('playing');
+});
+video.addEventListener('play', ()=>{
+  videoWrap.classList.add('playing');
+});
+// Contact form → LINE OA
+const contactForm = document.getElementById('contactForm');
+if(contactForm){
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const data = {
+      name: this.name.value.trim(),
+      company: this.company.value.trim() || '-',
+      email: this.email.value.trim(),
+      phone: this.phone.value.trim(),
+      message: this.message.value.trim()
+    };
+
+    // สร้างข้อความสำหรับ copy
+    const lineMessage =
+      'สอบถามข้อมูลผ่านเว็บไซต์ Swittek\n' +
+      '─────────────────\n' +
+      '👤 ชื่อ: ' + data.name + '\n' +
+      '🏢 บริษัท: ' + data.company + '\n' +
+      '📧 Email: ' + data.email + '\n' +
+      '📞 โทร: ' + data.phone + '\n' +
+      '─────────────────\n' +
+      '💬 ข้อความ:\n' + data.message;
+
+    // คัดลอกข้อความลง clipboard
+    const showLineRedirect = ()=>{
+      // แสดง modal บอกผู้ใช้
+      showSubmitModal();
+      // เปิด LINE OA หลัง 1.2 วินาที (ให้ผู้ใช้อ่านข้อความก่อน)
+      setTimeout(()=>{
+        window.open('https://lin.ee/HUAPXAB', '_blank');
+      }, 1200);
+    };
+
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(lineMessage).then(showLineRedirect).catch(showLineRedirect);
+    } else {
+      // fallback สำหรับ browser เก่า
+      const textarea = document.createElement('textarea');
+      textarea.value = lineMessage;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try { document.execCommand('copy'); } catch(err) {}
+      document.body.removeChild(textarea);
+      showLineRedirect();
+    }
+  });
+}
+
+// Modal แจ้งผู้ใช้
+function showSubmitModal(){
+  const modal = document.createElement('div');
+  modal.className = 'submit-modal';
+  modal.innerHTML =
+    '<div class="submit-modal-card">' +
+      '<div class="submit-modal-icon">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+      '</div>' +
+      '<h3>ขอบคุณค่ะ!</h3>' +
+      '<p>กำลังพาคุณไปที่ LINE Official ของเรา<br>ข้อความถูกคัดลอกแล้ว สามารถวาง (Paste) ส่งให้เราได้เลย</p>' +
+      '<div class="submit-modal-loader"><span></span><span></span><span></span></div>' +
+    '</div>';
+  document.body.appendChild(modal);
+  setTimeout(()=>modal.classList.add('show'), 10);
+  setTimeout(()=>{
+    modal.classList.remove('show');
+    setTimeout(()=>modal.remove(), 300);
+  }, 4000);
+}
+</script>
+
+</body>
+</html>

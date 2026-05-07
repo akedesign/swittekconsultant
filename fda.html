@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บริการจดแจ้ง อย. | SWITTEK Training & Consultancy</title>
+<meta name="description" content="บริการจด อย. / ขอใบอนุญาต อย. (FDA) / ขออนุญาตสถานที่จัดเก็บ / ขออนุญาตสถานที่ผลิต — เครื่องมือแพทย์, เครื่องสำอาง, อาหาร, อาหารเสริม, ยา, วัตถุอันตราย">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brand:#1cb5e0;
+  --brand-2:#0a7ca8;
+  --brand-3:#000851;
+  --ink:#0f1b2d;
+  --ink-2:#475569;
+  --muted:#64748b;
+  --line:#e6ecf3;
+  --bg:#ffffff;
+  --bg-soft:#f6f9fc;
+  --grad-cyan: linear-gradient(135deg,#1cb5e0,#0a7ca8);
+  --shadow-sm: 0 1px 2px rgba(15,27,45,.06), 0 2px 8px rgba(15,27,45,.04);
+  --shadow-md: 0 6px 18px rgba(15,27,45,.08), 0 2px 6px rgba(15,27,45,.05);
+  --shadow-lg: 0 24px 60px -16px rgba(10,124,168,.25), 0 8px 24px rgba(15,27,45,.08);
+  --radius: 14px;
+  --radius-lg: 22px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Prompt','IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ============ HEADER ============ */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;max-width:1280px;margin:0 auto;gap:24px;
+}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-img{
+  height:48px;width:auto;display:block;
+  transition:transform .25s ease;
+}
+.logo:hover .logo-img{transform:scale(1.03)}
+
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{
+  padding:8px 16px;border-radius:10px;
+  font-size:15px;font-weight:500;color:var(--ink-2);
+  transition:all .2s ease;
+  position:relative;
+}
+.nav a:hover{color:var(--brand-2);background:#eaf7fc}
+.nav a.active{color:var(--brand-2)}
+.nav a.active::after{
+  content:"";position:absolute;left:50%;bottom:2px;
+  width:18px;height:2px;background:var(--brand);border-radius:2px;
+  transform:translateX(-50%);
+}
+
+.lang{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 12px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--ink-2);
+}
+.lang .flag{
+  width:22px;height:15px;border-radius:2px;
+  overflow:hidden;
+  display:block;
+  box-shadow:0 0 0 1px rgba(0,0,0,.08);
+  flex-shrink:0;
+}
+.lang .flag svg{width:100%;height:100%;display:block}
+
+.menu-toggle{display:none;width:40px;height:40px;border-radius:10px;background:#f1f5f9}
+.menu-toggle span{display:block;width:18px;height:2px;background:var(--ink);margin:0 auto;border-radius:2px}
+.menu-toggle span+span{margin-top:4px}
+
+@media (max-width:980px){
+  .nav{
+    position:fixed;top:0;right:0;
+    width:280px;max-width:80vw;height:100vh;
+    background:#fff;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:80px 24px 32px;
+    box-shadow:-20px 0 60px rgba(15,27,45,.15);
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    z-index:99;
+    overflow-y:auto;
+  }
+  .nav.open{transform:translateX(0)}
+  .nav a{
+    padding:14px 18px;
+    border-radius:0;
+    font-size:16px;
+    border-bottom:1px solid var(--line);
+  }
+  .nav a:last-child{border-bottom:none}
+  .nav a.active::after{display:none}
+  .nav a.active{
+    background:linear-gradient(90deg,rgba(28,181,224,.1),transparent);
+    color:var(--brand-2);
+    border-left:3px solid var(--brand);
+    padding-left:15px;
+  }
+  .menu-toggle{
+    display:grid;place-items:center;gap:0;padding:11px 0;
+    z-index:101;position:relative;
+  }
+  .menu-toggle.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-toggle.active span:nth-child(2){opacity:0}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .menu-toggle span{transition:transform .3s, opacity .2s}
+  .menu-overlay{
+    position:fixed;inset:0;
+    background:rgba(15,27,45,.5);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    opacity:0;pointer-events:none;
+    transition:opacity .3s;
+    z-index:98;
+  }
+  .menu-overlay.show{opacity:1;pointer-events:auto}
+  .logo-img{height:38px}
+}
+
+/* ============ PAGE HERO ============ */
+.page-hero{
+  position:relative;
+  min-height:480px;
+  padding:80px 24px;
+  display:flex;align-items:center;
+  background:
+    linear-gradient(100deg, rgba(255,255,255,.82) 0%, rgba(255,255,255,.45) 35%, rgba(255,255,255,.1) 60%, rgba(255,255,255,0) 100%),
+    url('img/FDArserviceBG.png') center/cover no-repeat;
+  background-position:center right;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  isolation:isolate;
+}
+.page-hero::before{
+  content:"";position:absolute;
+  top:-150px;right:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(28,181,224,.08),transparent 70%);
+  border-radius:50%;z-index:-1;
+}
+.page-hero::after{
+  content:"";position:absolute;
+  bottom:-100px;left:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,8,81,.05),transparent 70%);
+  border-radius:50%;z-index:-1;
+}
+.page-hero-inner{
+  max-width:1200px;width:100%;
+  margin:0 auto;
+  position:relative;z-index:2;
+  text-align:left;
+}
+.hero-text{
+  max-width:580px;
+}
+.hero-badge{
+  display:inline-block;
+  padding:18px 70px;
+  background:var(--grad-cyan);
+  color:#fff;
+  font-size:clamp(28px,4vw,40px);
+  font-weight:600;
+  border-radius:999px;
+  letter-spacing:.5px;
+  box-shadow:0 18px 50px rgba(28,181,224,.45), 0 4px 12px rgba(10,124,168,.3);
+  position:relative;
+  animation:badgeIn .8s cubic-bezier(.2,.7,.2,1) both;
+  margin-bottom:28px;
+}
+@keyframes badgeIn{
+  from{opacity:0;transform:translateY(-20px) scale(.9)}
+  to{opacity:1;transform:none}
+}
+.hero-subtitle{
+  font-size:clamp(18px,2.2vw,22px);
+  font-weight:500;
+  color:var(--brand-2);
+  line-height:1.5;
+  margin-bottom:20px;
+}
+.hero-desc{
+  font-size:15px;
+  color:var(--ink-2);
+  line-height:1.8;
+  font-weight:300;
+}
+
+@media (max-width:900px){
+  .page-hero{
+    min-height:400px;
+    padding:60px 24px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.7) 60%, rgba(255,255,255,.45) 100%),
+      url('img/FDArserviceBG.png') center/cover no-repeat;
+    text-align:center;
+  }
+  .page-hero-inner{text-align:center}
+  .hero-text{max-width:100%}
+  .hero-badge{padding:14px 40px;font-size:24px}
+}
+
+/* ============ SERVICES LIST ============ */
+.services-list-section{
+  padding:80px 0;
+}
+.services-title{
+  font-size:clamp(24px,3vw,32px);
+  font-weight:600;color:var(--ink);
+  text-align:center;
+  margin-bottom:50px;
+  position:relative;display:block;
+}
+.services-title::after{
+  content:"";display:block;
+  width:48px;height:3px;background:var(--grad-cyan);border-radius:2px;
+  margin:14px auto 0;
+}
+
+.service-item{
+  display:grid;grid-template-columns:80px 1fr;gap:24px;
+  max-width:780px;margin:0 auto 40px;
+  padding:28px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-item:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+  border-color:transparent;
+}
+.service-icon{
+  width:64px;height:64px;
+  background:linear-gradient(135deg,#eaf7fc,#cdeefb);
+  border-radius:14px;
+  display:grid;place-items:center;
+  color:var(--brand-2);
+  flex-shrink:0;
+  box-shadow:inset 0 0 0 1px rgba(28,181,224,.15);
+}
+.service-icon svg{width:34px;height:34px}
+
+.service-content h3{
+  font-size:19px;font-weight:600;
+  color:var(--ink);
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.service-content h3 .num{
+  color:var(--brand-2);
+  font-weight:700;
+}
+.service-content ul{
+  list-style:none;padding:0;
+}
+.service-content ul li{
+  position:relative;
+  padding:6px 0 6px 22px;
+  font-size:15px;color:var(--ink-2);
+  line-height:1.6;font-weight:300;
+}
+.service-content ul li::before{
+  content:"";position:absolute;left:6px;top:14px;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--brand);
+}
+
+@media (max-width:600px){
+  .service-item{grid-template-columns:1fr;gap:14px;text-align:left;padding:20px}
+  .service-icon{margin:0 auto}
+  .service-content h3{justify-content:flex-start}
+}
+
+/* ============ CTA BANNER ============ */
+.cta-banner{
+  position:relative;
+  background:var(--grad-cyan);
+  color:#fff;
+  padding:60px 24px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.cta-banner::before{
+  content:"";position:absolute;
+  top:0;right:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(255,255,255,.12),transparent 60%);
+  border-radius:50%;z-index:-1;
+}
+.cta-banner::after{
+  content:"";position:absolute;
+  bottom:-100px;left:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,8,81,.25),transparent 60%);
+  border-radius:50%;z-index:-1;
+}
+.cta-banner-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:auto 1fr;gap:50px;
+  align-items:center;
+}
+.cta-banner-icon{
+  width:140px;height:140px;
+  background:rgba(255,255,255,.15);
+  border-radius:50%;
+  display:grid;place-items:center;
+  backdrop-filter:blur(6px);
+  border:2px solid rgba(255,255,255,.2);
+}
+.cta-banner-icon svg{width:80px;height:80px;color:#fff}
+.cta-banner-text h2{
+  font-size:clamp(26px,3.5vw,38px);
+  font-weight:700;line-height:1.2;
+  margin-bottom:14px;
+}
+.cta-banner-text p{
+  font-size:clamp(15px,1.8vw,18px);
+  font-weight:300;
+  line-height:1.6;
+  opacity:.95;
+}
+
+@media (max-width:768px){
+  .cta-banner-inner{grid-template-columns:1fr;gap:24px;text-align:center}
+  .cta-banner-icon{margin:0 auto;width:100px;height:100px}
+  .cta-banner-icon svg{width:56px;height:56px}
+}
+
+/* ============ STEPS ============ */
+.steps-section{
+  padding:100px 24px;
+  background:
+    linear-gradient(180deg,#fff,#f6f9fc);
+  position:relative;
+  overflow:hidden;
+}
+.steps-section::before{
+  content:"";position:absolute;
+  top:10%;right:-100px;width:300px;height:300px;
+  background:radial-gradient(circle,rgba(28,181,224,.1),transparent 70%);
+  border-radius:50%;
+}
+.steps-section::after{
+  content:"";position:absolute;
+  bottom:10%;left:-100px;width:300px;height:300px;
+  background:radial-gradient(circle,rgba(0,8,81,.08),transparent 70%);
+  border-radius:50%;
+}
+
+.steps-header{
+  text-align:center;
+  margin-bottom:80px;
+  position:relative;
+}
+.steps-header .eyebrow{
+  display:inline-block;
+  font-size:13px;letter-spacing:3px;
+  color:var(--brand-2);
+  font-weight:600;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  padding:6px 18px;
+  background:rgba(28,181,224,.1);
+  border-radius:999px;
+}
+.steps-header h2{
+  font-size:clamp(28px,3.5vw,40px);
+  font-weight:700;color:var(--ink);
+  line-height:1.2;
+  margin-bottom:10px;
+}
+.steps-header h2 span{
+  background:var(--grad-cyan);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+.steps-header p{
+  font-size:16px;color:var(--ink-2);
+  font-weight:300;
+  max-width:600px;margin:0 auto;
+}
+
+.steps-flow{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;
+  position:relative;
+}
+/* Connection line behind steps */
+.steps-flow::before{
+  content:"";position:absolute;
+  top:55px;left:10%;right:10%;height:3px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    var(--brand) 5%,
+    var(--brand) 95%,
+    transparent 100%
+  );
+  background-size:20px 3px;
+  background-image:linear-gradient(90deg,var(--brand) 50%,transparent 50%);
+  background-repeat:repeat-x;
+  z-index:0;
+  opacity:.4;
+}
+
+.step-card{
+  position:relative;
+  text-align:center;
+  padding:0 12px;
+  z-index:1;
+}
+.step-card .step-circle{
+  width:110px;height:110px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;
+  padding:18px 14px;
+  box-shadow:0 12px 30px rgba(28,181,224,.18);
+  border:3px solid #fff;
+  outline:2px solid #cdeefb;
+  outline-offset:0;
+  transition:all .35s cubic-bezier(.2,.7,.2,1);
+  position:relative;
+}
+.step-card:hover .step-circle{
+  transform:translateY(-8px) scale(1.05);
+  box-shadow:0 20px 50px rgba(28,181,224,.4);
+  outline-color:var(--brand);
+  background:linear-gradient(135deg,#fff,#eaf7fc);
+}
+.step-card .step-icon{
+  width:36px;height:36px;color:var(--brand-2);
+  transition:transform .35s ease;
+}
+.step-card:hover .step-icon{
+  transform:scale(1.1);
+  color:var(--brand);
+}
+
+.step-card .step-num{
+  position:absolute;
+  top:-6px;left:50%;
+  transform:translateX(-50%);
+  width:32px;height:32px;
+  background:var(--grad-cyan);
+  color:#fff;
+  font-size:14px;font-weight:700;
+  border-radius:50%;
+  display:grid;place-items:center;
+  box-shadow:0 6px 14px rgba(28,181,224,.45);
+  border:3px solid #fff;
+  z-index:2;
+}
+
+.step-card .step-title{
+  font-size:15px;font-weight:600;
+  color:var(--ink);
+  line-height:1.3;
+  margin-bottom:6px;
+  min-height:39px;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-card .step-desc{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+  font-weight:300;
+}
+
+@media (max-width:900px){
+  .steps-flow{
+    grid-template-columns:1fr;
+    gap:36px;
+    max-width:340px;
+  }
+  .steps-flow::before{
+    top:0;bottom:0;left:55px;right:auto;
+    width:3px;height:auto;
+    background:linear-gradient(180deg,
+      transparent 0%,
+      var(--brand) 5%,
+      var(--brand) 95%,
+      transparent 100%
+    );
+    background-size:3px 20px;
+    background-image:linear-gradient(180deg,var(--brand) 50%,transparent 50%);
+    background-repeat:repeat-y;
+  }
+  .step-card{
+    display:grid;grid-template-columns:auto 1fr;
+    gap:18px;
+    text-align:left;
+    padding:0;
+  }
+  .step-card .step-circle{margin:0;width:90px;height:90px;padding:14px 10px}
+  .step-card .step-icon{width:28px;height:28px}
+  .step-card .step-num{top:-4px;left:auto;right:auto;transform:none;margin-left:60px;position:absolute}
+  .step-card-text{
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .step-card .step-title{
+    min-height:auto;justify-content:flex-start;
+    margin-bottom:4px;
+  }
+}
+
+/* ============ FEATURES ============ */
+.features-section{
+  padding:80px 24px;
+}
+.features-head{
+  text-align:center;
+  margin-bottom:40px;
+}
+.features-head img{
+  height:60px;width:auto;
+  margin:0 auto 14px;
+}
+.features-head h3{
+  font-size:clamp(20px,2.4vw,24px);
+  font-weight:600;color:var(--ink-2);
+  font-weight:400;
+  max-width:780px;margin:0 auto;
+}
+.features-grid{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px 40px;
+  margin-bottom:50px;
+}
+.feature-item{
+  display:flex;align-items:center;gap:14px;
+  font-size:16px;color:var(--ink-2);
+  font-weight:400;
+}
+.feature-check{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,#06c755,#00b900);
+  color:#fff;
+  display:grid;place-items:center;
+  flex-shrink:0;
+  box-shadow:0 6px 16px rgba(6,199,85,.3);
+}
+.feature-check svg{width:18px;height:18px}
+
+/* Contact buttons */
+.contact-buttons{
+  display:flex;justify-content:center;gap:18px;
+  flex-wrap:wrap;
+  max-width:900px;margin:0 auto;
+}
+.contact-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 32px;
+  background:#fff;
+  border:1.5px solid var(--brand);
+  color:var(--brand-2);
+  font-size:15px;font-weight:500;
+  border-radius:999px;
+  box-shadow:0 6px 18px rgba(28,181,224,.15);
+  transition:all .25s ease;
+  cursor:pointer;
+}
+.contact-btn:hover{
+  background:var(--grad-cyan);color:#fff;
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(28,181,224,.4);
+  border-color:transparent;
+}
+.contact-btn svg{width:18px;height:18px}
+
+@media (max-width:768px){
+  .features-grid{grid-template-columns:1fr;gap:18px}
+  .contact-btn{flex:1 1 100%;justify-content:center}
+}
+
+/* ============ FOOTER ============ */
+.footer{
+  background:linear-gradient(135deg,#0a7ca8,#1cb5e0);
+  color:#fff;padding:24px 0;
+  text-align:center;font-size:14px;
+}
+.footer-inner{
+  display:flex;justify-content:center;align-items:center;gap:24px;
+  flex-wrap:wrap;
+}
+.footer-inner span{opacity:.85}
+.footer-inner .sep{opacity:.4}
+.footer a{color:#fff;font-weight:500}
+.footer a:hover{text-decoration:underline}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="img/logo.png" alt="SWITTEK Training and Consultancy Co., Ltd." class="logo-img">
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html">หน้าแรก</a>
+      <a href="consulting.html">งานให้คำปรึกษา</a>
+      <a href="training.html">ฝึกอบรม</a>
+      <a href="fda.html" class="active">บริการจดแจ้ง อย.</a>
+      <a href="about.html">เกี่ยวกับเรา</a>
+      <a href="contact.html">ติดต่อเรา</a>
+      <a href="portfolio.html">ผลงาน</a>
+    </nav>
+    <div class="lang">
+      <span class="flag">
+        <svg viewBox="0 0 6 4" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <rect width="6" height="4" fill="#A51931"/>
+          <rect width="6" height="2.667" y="0.667" fill="#F4F5F8"/>
+          <rect width="6" height="1.333" y="1.333" fill="#2D2A4A"/>
+        </svg>
+      </span>
+      <span>TH</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">บริการจด อย.</div>
+      <p class="hero-subtitle">
+        จด อย. / ขอใบอนุญาต อย. (FDA) /<br>
+        ขออนุญาตสถานที่จัดเก็บ / ขออนุญาตสถานที่ผลิต
+      </p>
+      <p class="hero-desc">
+        หลายคนติดปัญหาหลายๆ อย่างในการจด อย. ทั้งการเตรียมเอกสารและสถานที่
+        ทางเรามีบริการให้คำปรึกษาและจัดทำข้อมูล โดยผู้มีประสบการณ์และผู้เชี่ยวชาญ
+        เพื่อให้ขั้นตอนเป็นไปอย่างรวดเร็ว ไม่ต้องเสียเวลา
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES LIST ===== -->
+<section class="services-list-section">
+  <div class="container">
+    <h2 class="services-title reveal">บริการสินค้าที่ต้องจดแจ้ง อย.</h2>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">1.</span> จด อย. เครื่องมือการแพทย์</h3>
+        <ul>
+          <li>ขออนุญาต สถานที่ผลิตเครื่องมือแพทย์</li>
+          <li>ขอใบอนุญาตจำหน่าย เครื่องมือ อุปกรณ์แพทย์</li>
+          <li>ขออนุญาตโฆษณาเครื่องมือแพทย์ ทางวิทยุ โทรทัศน์ อินเตอร์เน็ต หนังสือและแผ่นพับ</li>
+          <li>ขออนุญาตนำเข้าวัสดุ อุปกรณ์ ชิ้นส่วน อะไหล่เพื่อใช้ในการผลิต จำหน่าย อุปกรณ์เครื่องมือแพทย์</li>
+          <li>ขอใบอนุญาตนำเข้าเครื่องมือแพทย์ ส่งออกเครื่องมือแพทย์ ผลิต เครื่องมือแพทย์ หรือขาย ส่งออกเครื่องมือแพทย์</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V6a4 4 0 0 1 8 0v16"/><path d="M4 14h8"/><path d="M16 9h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4"/><path d="M16 13h4"/><path d="M16 17h4"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">2.</span> จด อย. เครื่องสำอาง</h3>
+        <ul>
+          <li>ขออนุญาตจำหน่ายเครื่องสำอาง</li>
+          <li>ขออนุญาตจด อย. สถานที่นำเข้าเครื่องสำอาง</li>
+          <li>ขออนุญาตนำเข้าเครื่องสำอาง ผลิตเครื่องสำอาง</li>
+          <li>การโฆษณาเครื่องสำอางในธุรกิจอื่นๆ ที่เกี่ยวข้องกับเครื่องสำอาง</li>
+          <li>การจดแจ้งเครื่องสำอาง รับขอ อย. เครื่องสำอาง ทุกชนิด ทุกประเภท</li>
+          <li>ขอหนังสือรับรองมาตรฐานการผลิตเครื่องสำอาง การนำเข้าเครื่องสำอางควบคุม</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M9 2v2.789a4 4 0 0 1-.672 2.219l-.656.984A4 4 0 0 0 7 10.212V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-9.789a4 4 0 0 0-.672-2.219l-.656-.984A4 4 0 0 1 15 4.788V2"/><path d="M7 15a6.472 6.472 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">3.</span> จด อย. อาหาร/เครื่องดื่ม</h3>
+        <ul>
+          <li>ขออนุญาตผลิตอาหาร นำเข้าอาหาร</li>
+          <li>ต่ออายุใบอนุญาต อย.ผลิต นำเข้าอาหาร</li>
+          <li>ขออนุญาตสถานที่ผลิตอาหาร (สบ.1, อ.1)</li>
+          <li>ขออนุญาตตั้งโรงงานผลิตอาหาร ใช้ฉลากอาหาร</li>
+          <li>ขออนุญาตขึ้นทะเบียนอาหาร (สบ.1, สบ.3, สบ.5, สบ.7)</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">4.</span> จด อย. อาหารเสริม</h3>
+        <ul>
+          <li>ขออนุญาตตั้งโรงงานผลิตอาหารเสริม</li>
+          <li>ขออนุญาตผลิตอาหารเสริม นำเข้าอาหารเสริม</li>
+          <li>ขออนุญาตนำเข้าหรือสั่งอาหารเป็นการเฉพาะคราว</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">5.</span> จด อย. วัตถุอันตรายอาหารเสริม</h3>
+        <ul>
+          <li>ขึ้นทะเบียนวัตถุอันตราย</li>
+          <li>ขอใบอนุญาตวัตถุอันตรายทุกประเภท</li>
+          <li>ขอใบอนุญาตผลิต นำเข้า วัตถุอันตราย</li>
+          <li>ขออนุญาตสถานที่นำเข้า และจัดเก็บวัตถุอันตราย</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11.27 13.34 1.94-3.36a1 1 0 0 1 .73-.5l3.86-.5a1 1 0 0 0 .76-1.46l-1.91-3.31a1 1 0 0 0-1.5-.27l-2.93 2.55a1 1 0 0 1-.85.21L7.6 6.13a1 1 0 0 0-1.16.96L6 11.04a1 1 0 0 1-.31.7L2.6 14.93a1 1 0 0 0 .27 1.5l3.31 1.91a1 1 0 0 0 1.46-.76l.5-3.86a1 1 0 0 1 .5-.73l3.36-1.94"/><circle cx="17" cy="17" r="5"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">6.</span> จด อย. ยา อย.ยาสัตว์</h3>
+        <ul>
+          <li>ขออนุญาตผลิตยาแผนปัจจุบันหรือยาแผนโบราณ</li>
+          <li>ต่ออายุใบอนุญาตยา ขออนุญาตโฆษณายาทางสื่อทั่วไป</li>
+          <li>ขึ้นทะเบียนตำรับยาใหม่ ขอใบอนุญาตสถานที่ประกอบการยา</li>
+          <li>รับขออนุญาต(จดอย.)ผลิตยาตัวอย่างเพื่อการขึ้นทะเบียนตำรับยาแผนปัจจุบัน ยาแผนโบราณ</li>
+          <li>ขึ้นทะเบียนตำรับยาสามัญ ยาแผนโบราณ ขึ้นทะเบียนตำรับยาสัตว์ ตำรับยาแบบ Transfer ขึ้นทะเบียนยาผลิตเพื่อการส่งออก</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-item reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
+      </div>
+      <div class="service-content">
+        <h3><span class="num">7.</span> รับต่อใบอนุญาต</h3>
+        <ul>
+          <li>รับต่อใบอนุญาตผลิตภัณฑ์ เครื่องมือแพทย์/เครื่องสำอาง/อาหาร/วัตถุอันตราย</li>
+          <li>รับต่อใบอนุญาตสถานประกอบการ เครื่องมือแพทย์/เครื่องสำอาง/อาหาร/วัตถุอันตราย</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <div class="cta-banner-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 12h6"/>
+        <path d="M12 9v6"/>
+        <rect x="3" y="3" width="18" height="18" rx="3"/>
+        <path d="M7 7h2"/>
+      </svg>
+    </div>
+    <div class="cta-banner-text">
+      <h2>บริการรับจดแจ้ง อย.</h2>
+      <p>ด้วยทีมงานผู้เชี่ยวชาญ บริษัทดำเนินการมานานมากกว่า 20 ปี</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEPS ===== -->
+<section class="steps-section">
+  <div class="container">
+    <div class="steps-header reveal">
+      <span class="eyebrow">Process</span>
+      <h2>ขั้นตอนการ<span>ใช้บริการรับจดแจ้ง อย.</span></h2>
+      <p>เพียง 5 ขั้นตอนง่ายๆ ทีมงานของเราจะดูแลคุณตั้งแต่ต้นจนจบ</p>
+    </div>
+
+    <div class="steps-flow">
+      <!-- Step 1 -->
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <div class="step-circle">
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="step-card-text">
+          <div class="step-title">ติดต่อเจ้าหน้าที่</div>
+          <div class="step-desc">โทร 088-6426644<br>sale@swittek.co.th</div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <div class="step-circle">
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="step-card-text">
+          <div class="step-title">เจ้าหน้าที่แจ้งรายละเอียด</div>
+          <div class="step-desc">และเอกสารที่ใช้<br>ในการจด อย.</div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <div class="step-circle">
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+        </div>
+        <div class="step-card-text">
+          <div class="step-title">ลูกค้าเตรียมเอกสาร</div>
+          <div class="step-desc">ตามที่เจ้าหน้าที่แจ้ง<br>เพื่อใช้ยื่น</div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <div class="step-circle">
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="step-card-text">
+          <div class="step-title">เจ้าหน้าที่ตรวจเอกสาร</div>
+          <div class="step-desc">ตรวจสอบความถูกต้อง<br>ก่อนยื่น อย.</div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step-card reveal">
+        <div class="step-num">5</div>
+        <div class="step-circle">
+          <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </div>
+        <div class="step-card-text">
+          <div class="step-title">ยื่นเอกสารให้ อย.</div>
+          <div class="step-desc">ลูกค้ารอรับใบอนุญาต<br>เรียบร้อย</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="features-section">
+  <div class="container">
+    <div class="features-head reveal">
+      <img src="img/logo.png" alt="SWITTEK">
+      <h3>บริการให้คำปรึกษาและจัดทำข้อมูลจากผู้มีประสบการณ์และเชี่ยวชาญ</h3>
+    </div>
+
+    <div class="features-grid reveal">
+      <div class="feature-item">
+        <span class="feature-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        ถูกต้องตามกฎหมาย
+      </div>
+      <div class="feature-item">
+        <span class="feature-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        ราคาประหยัด และเป็นกันเอง
+      </div>
+      <div class="feature-item">
+        <span class="feature-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        การันตีความสำเร็จในทุกมาตรฐาน
+      </div>
+      <div class="feature-item">
+        <span class="feature-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        บริการสะดวกรวดเร็ว
+      </div>
+      <div class="feature-item">
+        <span class="feature-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        หมดปัญหาเรื่องเอกสารผิดพลาด
+      </div>
+      <div class="feature-item">
+        <span class="feature-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        ดูแลทุกขั้นตอน ตลอดการใช้บริการ
+      </div>
+    </div>
+
+    <div class="contact-buttons reveal">
+      <a href="https://lin.ee/HUAPXAB" target="_blank" class="contact-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        ติดต่อสอบถาม
+      </a>
+      <a href="tel:0884266644" class="contact-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        088-6426644
+      </a>
+      <a href="mailto:sale@swittek.co.th" class="contact-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        sale@swittek.co.th
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner container">
+    <span>บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด</span>
+    <span class="sep">|</span>
+    <span>ติดต่อ 02-0056782, 083-4265554</span>
+    <span class="sep">|</span>
+    <span>E-mail <a href="mailto:issaree@swittek.co.th">issaree@swittek.co.th</a></span>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+const menuOverlay = document.getElementById('menuOverlay');
+
+function closeMenu(){
+  mainNav.classList.remove('open');
+  menuToggle.classList.remove('active');
+  menuOverlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+function openMenu(){
+  mainNav.classList.add('open');
+  menuToggle.classList.add('active');
+  menuOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+menuToggle.addEventListener('click', ()=>{
+  if(mainNav.classList.contains('open')) closeMenu();
+  else openMenu();
+});
+menuOverlay.addEventListener('click', closeMenu);
+mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

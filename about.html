@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เกี่ยวกับเรา | SWITTEK Training & Consultancy</title>
+<meta name="description" content="บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด — ที่ปรึกษาและฝึกอบรมระบบคุณภาพและความปลอดภัยอาหาร ประสบการณ์มากกว่า 20 ปี">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brand:#1cb5e0;
+  --brand-2:#0a7ca8;
+  --brand-3:#000851;
+  --gold:#e5b53a;
+  --gold-2:#d49d1f;
+  --ink:#0f1b2d;
+  --ink-2:#475569;
+  --muted:#64748b;
+  --line:#e6ecf3;
+  --bg:#ffffff;
+  --bg-soft:#f6f9fc;
+  --grad-cyan: linear-gradient(135deg,#1cb5e0,#0a7ca8);
+  --grad-gold: linear-gradient(135deg,#f4ca5a,#d49d1f);
+  --shadow-sm: 0 1px 2px rgba(15,27,45,.06), 0 2px 8px rgba(15,27,45,.04);
+  --shadow-md: 0 6px 18px rgba(15,27,45,.08), 0 2px 6px rgba(15,27,45,.05);
+  --shadow-lg: 0 24px 60px -16px rgba(10,124,168,.25), 0 8px 24px rgba(15,27,45,.08);
+  --radius: 14px;
+  --radius-lg: 22px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Prompt','IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);background:var(--bg);
+  line-height:1.65;font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ============ HEADER ============ */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;max-width:1280px;margin:0 auto;gap:24px;
+}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-img{height:48px;width:auto;display:block;transition:transform .25s ease}
+.logo:hover .logo-img{transform:scale(1.03)}
+
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{
+  padding:8px 16px;border-radius:10px;
+  font-size:15px;font-weight:500;color:var(--ink-2);
+  transition:all .2s ease;position:relative;
+}
+.nav a:hover{color:var(--brand-2);background:#eaf7fc}
+.nav a.active{color:var(--brand-2)}
+.nav a.active::after{
+  content:"";position:absolute;left:50%;bottom:2px;
+  width:18px;height:2px;background:var(--brand);border-radius:2px;
+  transform:translateX(-50%);
+}
+
+.lang{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 12px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--ink-2);
+}
+.lang .flag{
+  width:22px;height:15px;border-radius:2px;overflow:hidden;
+  display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08);flex-shrink:0;
+}
+.lang .flag svg{width:100%;height:100%;display:block}
+
+.menu-toggle{display:none;width:40px;height:40px;border-radius:10px;background:#f1f5f9}
+.menu-toggle span{display:block;width:18px;height:2px;background:var(--ink);margin:0 auto;border-radius:2px}
+.menu-toggle span+span{margin-top:4px}
+
+@media (max-width:980px){
+  .nav{
+    position:fixed;top:0;right:0;
+    width:280px;max-width:80vw;height:100vh;background:#fff;
+    flex-direction:column;align-items:stretch;gap:0;
+    padding:80px 24px 32px;
+    box-shadow:-20px 0 60px rgba(15,27,45,.15);
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    z-index:99;overflow-y:auto;
+  }
+  .nav.open{transform:translateX(0)}
+  .nav a{padding:14px 18px;border-radius:0;font-size:16px;border-bottom:1px solid var(--line)}
+  .nav a:last-child{border-bottom:none}
+  .nav a.active::after{display:none}
+  .nav a.active{
+    background:linear-gradient(90deg,rgba(28,181,224,.1),transparent);
+    color:var(--brand-2);
+    border-left:3px solid var(--brand);padding-left:15px;
+  }
+  .menu-toggle{display:grid;place-items:center;gap:0;padding:11px 0;z-index:101;position:relative}
+  .menu-toggle.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-toggle.active span:nth-child(2){opacity:0}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .menu-toggle span{transition:transform .3s, opacity .2s}
+  .menu-overlay{
+    position:fixed;inset:0;
+    background:rgba(15,27,45,.5);
+    backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+    opacity:0;pointer-events:none;transition:opacity .3s;z-index:98;
+  }
+  .menu-overlay.show{opacity:1;pointer-events:auto}
+  .logo-img{height:38px}
+}
+
+/* ============ PAGE HERO ============ */
+.page-hero{
+  position:relative;
+  min-height:480px;
+  padding:80px 24px;
+  display:flex;align-items:center;
+  background:
+    linear-gradient(100deg, rgba(255,255,255,.75) 0%, rgba(255,255,255,.4) 40%, rgba(255,255,255,.1) 70%, rgba(255,255,255,0) 100%),
+    url('img/AboutuBG.png') center/cover no-repeat;
+  background-position:center right;
+  border-bottom:1px solid var(--line);
+  isolation:isolate;overflow:hidden;
+}
+.page-hero::before{
+  content:"";position:absolute;
+  top:-150px;right:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(28,181,224,.08),transparent 70%);
+  border-radius:50%;z-index:-1;
+}
+.page-hero::after{
+  content:"";position:absolute;
+  bottom:-100px;left:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,8,81,.05),transparent 70%);
+  border-radius:50%;z-index:-1;
+}
+.page-hero-inner{
+  max-width:1200px;width:100%;
+  margin:0 auto;
+  position:relative;z-index:2;
+  text-align:left;
+}
+.hero-badge{
+  display:inline-block;padding:18px 90px;
+  background:var(--grad-cyan);color:#fff;
+  font-size:clamp(28px,4vw,42px);font-weight:600;
+  border-radius:999px;letter-spacing:.5px;
+  box-shadow:0 18px 50px rgba(28,181,224,.45), 0 4px 12px rgba(10,124,168,.3);
+  position:relative;
+  animation:badgeIn .8s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes badgeIn{
+  from{opacity:0;transform:translateY(-20px) scale(.9)}
+  to{opacity:1;transform:none}
+}
+
+@media (max-width:768px){
+  .page-hero{
+    min-height:380px;
+    padding:60px 24px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.7) 60%, rgba(255,255,255,.45) 100%),
+      url('img/AboutuBG.png') center/cover no-repeat;
+    text-align:center;
+  }
+  .page-hero-inner{text-align:center}
+  .hero-badge{padding:14px 50px;font-size:26px}
+}
+
+/* ============ VALUES ============ */
+.values-section{
+  padding:80px 24px;
+  background:linear-gradient(180deg,#fff 0%, #f6f9fc 100%);
+}
+.values-grid{
+  max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+}
+.value-card{
+  background:#fff;border-radius:24px;
+  padding:48px 32px 36px;text-align:center;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-md);
+  transition:transform .35s ease, box-shadow .35s ease;
+  position:relative;isolation:isolate;overflow:hidden;
+}
+.value-card::before{
+  content:"";position:absolute;
+  top:-60px;left:50%;transform:translateX(-50%);
+  width:200px;height:120px;
+  background:radial-gradient(ellipse,rgba(228,181,58,.15),transparent 70%);
+  z-index:-1;
+}
+.value-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.value-icon{
+  width:64px;height:64px;margin:0 auto 20px;
+  background:var(--grad-gold);border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+  box-shadow:0 12px 28px rgba(212,157,31,.4), inset 0 -3px 8px rgba(0,0,0,.1);
+  position:relative;
+}
+.value-icon::after{
+  content:"";position:absolute;inset:6px;border-radius:50%;
+  background:linear-gradient(180deg,rgba(255,255,255,.3) 0%,transparent 50%);
+  pointer-events:none;
+}
+.value-icon svg{width:30px;height:30px;position:relative;z-index:1}
+.value-card h3{
+  font-size:22px;font-weight:600;color:var(--ink);
+  margin-bottom:18px;
+}
+.value-card p{
+  font-size:15px;color:var(--ink-2);
+  line-height:1.8;font-weight:300;text-align:left;
+}
+.value-card .sub-section{margin-top:18px;text-align:left}
+.value-card .sub-section + .sub-section{margin-top:14px}
+.value-card .sub-section h4{
+  font-size:16px;font-weight:600;
+  color:var(--brand-2);margin-bottom:6px;
+}
+.value-card .sub-section p{margin:0}
+@media (max-width:900px){
+  .values-grid{grid-template-columns:1fr;gap:20px;max-width:480px}
+}
+
+/* ============ HISTORY ============ */
+.history-section{
+  padding:100px 24px;background:#fff;
+  position:relative;overflow:hidden;
+}
+.history-section::before{
+  content:"";position:absolute;
+  top:5%;right:-100px;width:300px;height:300px;
+  background:radial-gradient(circle,rgba(28,181,224,.08),transparent 70%);
+  border-radius:50%;
+}
+.history-header{text-align:center;margin-bottom:60px}
+.history-badge{
+  display:inline-block;padding:14px 70px;
+  background:var(--grad-cyan);color:#fff;
+  font-size:clamp(24px,3.5vw,34px);font-weight:600;
+  border-radius:999px;letter-spacing:.5px;
+  box-shadow:0 16px 40px rgba(28,181,224,.4);
+}
+
+.timeline{max-width:780px;margin:0 auto;position:relative}
+.timeline::before{
+  content:"";position:absolute;
+  left:60px;top:60px;bottom:60px;
+  width:2px;
+  background:linear-gradient(180deg,var(--brand) 0%,#cdeefb 50%,var(--brand) 100%);
+  z-index:0;
+}
+
+.timeline-item{
+  display:grid;grid-template-columns:130px 1fr;
+  gap:30px;align-items:flex-start;
+  margin-bottom:50px;position:relative;z-index:1;
+}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-marker{position:relative;display:flex;align-items:center;justify-content:center}
+.timeline-circle{
+  width:120px;height:120px;border-radius:50%;
+  background:#fff;border:3px solid var(--brand);
+  box-shadow:0 14px 30px rgba(28,181,224,.25), inset 0 0 0 6px rgba(28,181,224,.08);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.timeline-item:hover .timeline-circle{
+  transform:scale(1.06);
+  box-shadow:0 20px 40px rgba(28,181,224,.4), inset 0 0 0 6px rgba(28,181,224,.12);
+}
+.timeline-year{font-size:26px;font-weight:700;color:var(--brand-2);line-height:1}
+.timeline-num{
+  position:absolute;top:50%;right:-14px;
+  transform:translateY(-50%);
+  width:36px;height:36px;
+  background:var(--grad-cyan);color:#fff;
+  font-size:14px;font-weight:600;
+  border-radius:50%;display:grid;place-items:center;
+  box-shadow:0 6px 16px rgba(28,181,224,.45);
+  border:3px solid #fff;
+}
+.timeline-content{padding-top:24px}
+.timeline-content h3{font-size:22px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.timeline-content p{font-size:15px;color:var(--ink-2);line-height:1.7;font-weight:300}
+
+@media (max-width:600px){
+  .timeline-item{grid-template-columns:90px 1fr;gap:20px}
+  .timeline::before{left:45px}
+  .timeline-circle{width:90px;height:90px}
+  .timeline-year{font-size:20px}
+  .timeline-num{width:28px;height:28px;font-size:12px;right:-10px}
+  .timeline-content{padding-top:14px}
+  .timeline-content h3{font-size:18px}
+}
+
+/* ============ GALLERY ============ */
+.gallery-section{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:0;
+  height:240px;overflow:hidden;background:#0f1b2d;
+}
+.gallery-section > div{
+  background-size:cover;background-position:center;
+  filter:saturate(1.05);
+  transition:filter .3s, transform .5s;
+  position:relative;
+}
+.gallery-section > div::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(0,8,81,.4));
+  opacity:0;transition:opacity .3s;
+}
+.gallery-section > div:hover{filter:saturate(1.2) brightness(1.05);transform:scale(1.04)}
+.gallery-section > div:hover::after{opacity:1}
+@media (max-width:900px){
+  .gallery-section{grid-template-columns:repeat(4,1fr);height:auto}
+  .gallery-section > div{aspect-ratio:1/1}
+}
+@media (max-width:520px){
+  .gallery-section{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============ FOOTER ============ */
+.footer{
+  background:linear-gradient(135deg,#0a7ca8,#1cb5e0);
+  color:#fff;padding:24px 0;
+  text-align:center;font-size:14px;
+}
+.footer-inner{display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap}
+.footer-inner span{opacity:.85}
+.footer-inner .sep{opacity:.4}
+.footer a{color:#fff;font-weight:500}
+.footer a:hover{text-decoration:underline}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="img/logo.png" alt="SWITTEK" class="logo-img">
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html">หน้าแรก</a>
+      <a href="consulting.html">งานให้คำปรึกษา</a>
+      <a href="training.html">ฝึกอบรม</a>
+      <a href="fda.html">บริการจดแจ้ง อย.</a>
+      <a href="about.html" class="active">เกี่ยวกับเรา</a>
+      <a href="contact.html">ติดต่อเรา</a>
+      <a href="portfolio.html">ผลงาน</a>
+    </nav>
+    <div class="lang">
+      <span class="flag">
+        <svg viewBox="0 0 6 4" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <rect width="6" height="4" fill="#A51931"/>
+          <rect width="6" height="2.667" y="0.667" fill="#F4F5F8"/>
+          <rect width="6" height="1.333" y="1.333" fill="#2D2A4A"/>
+        </svg>
+      </span>
+      <span>TH</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-badge">เกี่ยวกับเรา</div>
+  </div>
+</section>
+
+<section class="values-section">
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2z"/></svg>
+      </div>
+      <h3>วิสัยทัศน์</h3>
+      <p>ถ่ายทอดองค์ความรู้ ความน่าเชื่อถือ อย่างน่านับถือโดยทีมงานมืออาชีพ พร้อมส่งมอบงานบริการสู่ลูกค้าอย่างเป็นเลิศ</p>
+    </div>
+
+    <div class="value-card reveal">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <h3>พันธกิจ</h3>
+      <p>การขับเคลื่อนเพื่อเป็นบริษัทที่ปรึกษาและฝึกอบรมระบบคุณภาพและความปลอดภัยที่ดีที่สุดในประเทศไทย เพื่อส่งมอบความรู้อย่างมีคุณภาพสูงสุดและการบริการอย่างมืออาชีพ เพื่อความสำเร็จในงานบริการที่เหนือกว่าประสิทธิภาพ</p>
+    </div>
+
+    <div class="value-card reveal">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <h3>คุณค่า</h3>
+      <div class="sub-section">
+        <h4>ดีเลิศ</h4>
+        <p>เรามุ่งมั่นอย่างต่อเนื่องเพื่อให้เกินความคาดหมายของลูกค้าของเรา</p>
+      </div>
+      <div class="sub-section">
+        <h4>ความรู้</h4>
+        <p>ความจำเป็นในการเพิ่มพูนความเชี่ยวชาญทางเทคนิคอย่างต่อเนื่องเพื่อตอบสนองความต้องการของลูกค้าที่กำลังพัฒนาของเรา</p>
+      </div>
+      <div class="sub-section">
+        <h4>วิสัยทัศน์</h4>
+        <p>เป็นมืออาชีพการฝึกอบรมความปลอดภัยด้านอาหารเป็นผู้นำในด้านสิ่งแวดล้อมและสาธารณสุข</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="history-section">
+  <div class="container">
+    <div class="history-header reveal">
+      <div class="history-badge">ประวัติ</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">
+          <div class="timeline-circle">
+            <span class="timeline-year">2542</span>
+          </div>
+          <div class="timeline-num">01</div>
+        </div>
+        <div class="timeline-content">
+          <h3>โรงงานอุตสาหกรรม</h3>
+          <p>ประสบการณ์ทำงานในโรงงานอุตสาหกรรมอาหาร</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">
+          <div class="timeline-circle">
+            <span class="timeline-year">2549</span>
+          </div>
+          <div class="timeline-num">02</div>
+        </div>
+        <div class="timeline-content">
+          <h3>ผู้ตรวจประเมินมืออาชีพ</h3>
+          <p>ประสบการณ์ในการตรวจประเมินและจัดการระบบการด้านคุณภาพและความปลอดภัยอาหาร</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker">
+          <div class="timeline-circle">
+            <span class="timeline-year">2560</span>
+          </div>
+          <div class="timeline-num">03</div>
+        </div>
+        <div class="timeline-content">
+          <h3>ที่ปรึกษาและวิทยากรฝึกอบรม</h3>
+          <p>ประสบการณ์ในงานบริการที่ปรึกษาและเป็นผู้เชี่ยวชาญในการฝึกอบรมระบบการจัดการด้านคุณภาพและความปลอดภัยในทุกๆ อุตสาหกรรม</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1544531585-9847b68c8c86?w=600&q=80')"></div>
+  <div style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80')"></div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner container">
+    <span>บริษัท สวิตต์เทค เทรนนิ่ง แอนด์ คอนซัลแทนซี่ จำกัด</span>
+    <span class="sep">|</span>
+    <span>ติดต่อ 02-0056782, 083-4265554</span>
+    <span class="sep">|</span>
+    <span>E-mail <a href="mailto:issaree@swittek.co.th">issaree@swittek.co.th</a></span>
+  </div>
+</footer>
+
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+const menuOverlay = document.getElementById('menuOverlay');
+
+function closeMenu(){
+  mainNav.classList.remove('open');
+  menuToggle.classList.remove('active');
+  menuOverlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+function openMenu(){
+  mainNav.classList.add('open');
+  menuToggle.classList.add('active');
+  menuOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+menuToggle.addEventListener('click', ()=>{
+  if(mainNav.classList.contains('open')) closeMenu();
+  else openMenu();
+});
+menuOverlay.addEventListener('click', closeMenu);
+mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
